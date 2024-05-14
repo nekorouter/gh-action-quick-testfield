@@ -1,0 +1,21 @@
+name: test-artifacts
+
+on:
+  workflow_run:
+    workflows: build-artifacts
+    types: 
+      - completed
+
+jobs:
+  download:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: 'Download artifact'
+        uses: actions/download-artifact@v4
+      - name: 'List all downloaded files'
+        run: ls -R $GITHUB_WORKSPACE
+      - name: 'Decompress artifact'
+        run: | 
+          unzip mountain.zip
+      - name: 'List all downloaded files'
+        run: ls -R $GITHUB_WORKSPACE

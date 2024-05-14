@@ -1,0 +1,32 @@
+name: build-artifacts
+
+on:
+  push:
+    tags:
+      - '*'
+    branches:
+      - '*'
+  pull_request:
+  workflow_dispatch:
+
+# mountain.zip -- folder temple -- old_monk.txt & little_monk.sh
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Makeup files
+        run: |
+          mkdir temple
+          touch old_monk.txt
+          touch little_monk.sh
+      - name: List all files in workdir
+        run: |
+          ls -R .
+      - name: 'Upload Artifact SDCARD'
+        uses: actions/upload-artifact@v3
+        with:
+          retention-days: 30
+          name: mountain
+          path: |
+            temple
