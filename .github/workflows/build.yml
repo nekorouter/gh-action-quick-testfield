@@ -18,13 +18,13 @@ jobs:
       - name: Makeup files
         run: |
           mkdir temple
-          touch old_monk.txt
-          touch little_monk.sh
+          touch temple/old_monk.txt
+          touch temple/little_monk.sh
       - name: List all files in workdir
         run: |
           ls -R .
-      - name: 'Upload Artifact SDCARD'
-        uses: actions/upload-artifact@v3
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v4
         with:
           retention-days: 30
           name: mountain
