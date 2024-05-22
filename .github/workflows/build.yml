@@ -32,7 +32,7 @@ jobs:
             temple
 
   test:
-    runs-on: ubuntu-22.04
+    runs-on: [target-1]
     needs: [
        build
     ]
