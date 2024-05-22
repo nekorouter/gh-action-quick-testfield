@@ -31,8 +31,24 @@ jobs:
           path: |
             temple
 
+      - name: Makeup files 2
+        run: |
+          mkdir temple2
+          touch temple2/old_monk2.txt
+          touch temple2/little_monk2.sh
+      - name: List all files in workdir
+        run: |
+          ls -R .
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v4
+        with:
+          retention-days: 30
+          name: mountain2
+          path: |
+            temple2
+
   test:
-    runs-on: [target-1]
+    runs-on: ubuntu-22.04
     needs: [
        build
     ]
